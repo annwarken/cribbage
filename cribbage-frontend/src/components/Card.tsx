@@ -12,11 +12,11 @@ const rankMap: Record<number, string> = {
   13: 'king',
 };
 
-export default function Card({ rank, suit, faceDown = false, size = 'md' }: CardProps) {
+export default function Card({ rank, suit, faceDown = false, size = 'sm' }: CardProps) {
   const sizeClass = {
-    sm: 'w-12',
-    md: 'w-16',
-    lg: 'w-24',
+    sm: 'w-[40px] h-[60px]',
+    md: 'w-[60px] h-[90px]',
+    lg: 'w-[80px] h-[120px]'
   }[size];
 
   const rankStr = rankMap[rank] || rank;
@@ -25,7 +25,7 @@ export default function Card({ rank, suit, faceDown = false, size = 'md' }: Card
   return (
     <img
       src={faceDown ? '/cards/back.svg' : `/cards/${filename}`}
-      alt="playing card"
+      alt={`${rankStr}_of_${suit}`}
       className={`inline-block ${sizeClass} drop-shadow-md`}
     />
   );
